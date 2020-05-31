@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 app.get('/',(req,res) => {
-    res.send("Welcome to Reset4 home page");
+    res.send("Update");
 })
 
 const port = process.env.PORT || 3000;
