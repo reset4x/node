@@ -1,28 +1,30 @@
-var debug = require('debug')('node:server');
 var http = require('http');
 
 /**
- * Get port from environment and store in Express.
+ * Dinleyeceğimiz port numarasını aws içindeki environment larda PORT değişkeninden alalım eğer Port değişkeni yok ise default olarak 8081 portunu i dinleyelim.
  */
-
 var port = normalizePort(process.env.PORT || '8081');
 
 const express = require('express');
 const app = express();
 
+/**
+ * bir get apisi ile ekrana mesajımızı yazdıralım
+ */
 app.get('/',(req,res) => {
-    res.send("Uygulama başarılı ayağa kalktı 3");
+    res.send("Uygulama başarılı ayağa kalktı");
 })
 
+/**
+ * Şimdi portumuzu dinleyelim.
+ */
 app.listen(port, () =>{
-    console.log("Superrrr oldumuki");
-    console.log("Bence Oldu");
+    console.log("port dinlemek super oldu");
 });
 
 /**
- * Normalize a port into a number, string, or false.
+ * Port numarası yok ise false, var ise number formatında döndürmek için kullanıyoruz.
  */
-
 function normalizePort(val) {
     var port = parseInt(val, 10);
   
@@ -38,3 +40,4 @@ function normalizePort(val) {
   
     return false;
   }
+
