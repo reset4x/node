@@ -11,7 +11,7 @@ const express = require('express');
 const app = express();
 
 app.get('/',(req,res) => {
-    res.send("Uygulama başarılı ayağa kalktı 2");
+    res.send("Uygulama başarılı ayağa kalktı 3");
 })
 
 app.listen(port, () =>{
