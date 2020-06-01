@@ -1,39 +1,40 @@
-var port = process.env.PORT || 3000,
-    http = require('http'),
-    fs = require('fs'),
-    html = fs.readFileSync('index.html');
+var debug = require('debug')('node:server');
+var http = require('http');
 
-var log = function(entry) {
-    fs.appendFileSync('/tmp/sample-app.log', new Date().toISOString() + ' - ' + entry + '\n');
-};
+/**
+ * Get port from environment and store in Express.
+ */
 
-var server = http.createServer(function (req, res) {
-    if (req.method === 'POST') {
-        var body = '';
+var port = normalizePort(process.env.PORT || '8081');
 
-        req.on('data', function(chunk) {
-            body += chunk;
-        });
+const express = require('express');
+const app = express();
 
-        req.on('end', function() {
-            if (req.url === '/') {
-                log('Received message: ' + body);
-            } else if (req.url = '/scheduled') {
-                log('Received task ' + req.headers['x-aws-sqsd-taskname'] + ' scheduled at ' + req.headers['x-aws-sqsd-scheduled-at']);
-            }
+app.get('/',(req,res) => {
+    res.send("Uygulama başarılı ayağa kalktı 2");
+})
 
-            res.writeHead(200, 'OK', {'Content-Type': 'text/plain'});
-            res.end();
-        });
-    } else {
-        res.writeHead(200);
-        res.write(html);
-        res.end();
-    }
+app.listen(port, () =>{
+    console.log("Superrrr oldumuki");
+    console.log("Bence Oldu");
 });
 
-// Listen on port 3000, IP defaults to 127.0.0.1
-server.listen(port);
+/**
+ * Normalize a port into a number, string, or false.
+ */
 
-// Put a friendly message on the terminal
-console.log('Server running at http://127.0.0.1:' + port + '/');
+function normalizePort(val) {
+    var port = parseInt(val, 10);
+  
+    if (isNaN(port)) {
+      // named pipe
+      return val;
+    }
+  
+    if (port >= 0) {
+      // port number
+      return port;
+    }
+  
+    return false;
+  }
