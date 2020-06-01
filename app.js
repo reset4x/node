@@ -1,7 +1,13 @@
 const express = require('express');
 const app = express();
 
+const port = process.env.port || 8081;
 
 app.get('/',(req,res) => {
     res.send("Uygulama başarılı ayağa kalktı 2");
 })
+
+app.listen(port, () =>{
+    console.log("Superrrr oldumuki");
+    console.log("Bence Oldu");
+});
