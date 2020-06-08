@@ -4,7 +4,8 @@ var mongoose = require('mongoose');
 var User = require('./user');
 
 
-const uri = 'mongodb+srv://testUser:Test1234@reset4cluster-exgxd.mongodb.net/testDB';
+//const uri = 'mongodb+srv://testUser:Test1234@reset4cluster-exgxd.mongodb.net/testDB';
+const uri = 'mongodb+srv://testUser:Test1234@reset4-suj25.mongodb.net/testDB';
 
 mongoose.connect(uri, {useNewUrlParser: true }).then( () => {
   console.log('MongoDB ye bağlanti başarili')
