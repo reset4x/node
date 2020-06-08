@@ -58,9 +58,11 @@ app.post('/create_user',urlencoded,(req,res) => {
     email:req.body.email
   });
   
-  user.save();
-
-  res.send(req.body.name + " li User kayit edildi");
+  user.save().then( () => {
+    console.log('kayit başarili');
+    res.send(req.body.name + " isimli User kayit edildi");
+  })
+  .catch( (err) => res.send(error + " hatası alındı") );
 })
 
 /**
